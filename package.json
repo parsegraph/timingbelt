@@ -74,6 +74,8 @@
     "glslify-loader": "^2.0.0",
     "openssl": "^1.1.0",
     "parsegraph-testsuite": "^1.4.1",
+    "parsegraph-timing": "^1.4.3",
+    "parsegraph-window": "^1.5.5",
     "raw-loader": "^4.0.1",
     "ts-mocha": "^8.0.0",
     "webgl-mock": "^0.1.7"
