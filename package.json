@@ -1,6 +1,6 @@
 {
   "name": "parsegraph-timingbelt",
-  "version": "1.5.5-dev",
+  "version": "1.5.6-dev",
   "description": "timingbelt",
   "main": "dist/parsegraph-timingbelt.js",
   "types": "dist/parsegraph-timingbelt.d.ts",
@@ -72,9 +72,9 @@
     "express": "^4.17.1",
     "glslify-loader": "^2.0.0",
     "openssl": "^1.1.0",
-    "parsegraph-testsuite": "^1.4.1",
-    "parsegraph-timing": "^1.4.3",
-    "parsegraph-window": "^1.5.5",
+    "parsegraph-testsuite": "^1.4.3",
+    "parsegraph-timing": "^1.4.5",
+    "parsegraph-window": "^1.6.0",
     "raw-loader": "^4.0.1",
     "ts-mocha": "^8.0.0",
     "webgl-mock": "^0.1.7"
