@@ -1,6 +1,6 @@
 {
     "name": "parsegraph-timingbelt",
-    "version": "1.5.5",
+    "version": "1.5.6",
     "description": "timingbelt",
     "main": "dist/parsegraph-timingbelt.js",
     "types": "dist/parsegraph-timingbelt.d.ts",
