@@ -1,6 +1,6 @@
 {
   "name": "parsegraph-timingbelt",
-  "version": "1.5.7-dev",
+  "version": "1.5.8-dev",
   "description": "timingbelt",
   "main": "dist/parsegraph-timingbelt.js",
   "types": "dist/parsegraph-timingbelt.d.ts",
@@ -74,7 +74,7 @@
     "openssl": "^1.1.0",
     "parsegraph-testsuite": "^1.4.3",
     "parsegraph-timing": "^1.4.6",
-    "parsegraph-window": "^1.6.2",
+    "parsegraph-window": "^1.6.3",
     "parsegraph-method": "^1.4.7",
     "raw-loader": "^4.0.1",
     "ts-mocha": "^8.0.0",
