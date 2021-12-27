@@ -9,10 +9,13 @@ module.exports = {
       root:"parsegraph_log"
     },
   },
-  entry: path.resolve(__dirname, "src/index.ts"),
+  entry: {
+    lib: path.resolve(__dirname, "src/index.ts"),
+    demo: path.resolve(__dirname, "src/demo.ts")
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "parsegraph-timingbelt.js",
+    filename: "parsegraph-timingbelt.[name].js",
     globalObject: "this",
     library: "parsegraph_timingbelt",
     libraryTarget: "umd",
