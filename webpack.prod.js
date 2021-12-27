@@ -9,7 +9,7 @@ module.exports = {
       root:"parsegraph_log"
     },
   },
-  entry: path.resolve(__dirname, "src/timingbelt.ts"),
+  entry: path.resolve(__dirname, "src/index.ts"),
   output: {
     path: path.resolve(__dirname, "dist-prod"),
     filename: "parsegraph-timingbelt.js",
