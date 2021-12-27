@@ -1,12 +1,20 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/timingbelt.ts"),
+  externals: {
+    "parsegraph-log":{
+      commonjs:"parsegraph-log",
+      commonjs2:"parsegraph-log",
+      amd:"parsegraph-log",
+      root:"parsegraph_log"
+    },
+  },
+  entry: path.resolve(__dirname, "src/index.ts"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "parsegraph-timingbelt.js",
     globalObject: "this",
-    library: "parsegraph",
+    library: "parsegraph_timingbelt",
     libraryTarget: "umd",
   },
   module: {
@@ -14,7 +22,7 @@ module.exports = {
       {
         test: /\.(js|ts|tsx?)$/,
         exclude: /node_modules/,
-        loader: ['babel-loader', 'ts-loader']
+        use: ['babel-loader', 'ts-loader']
       },
       {
         test: /\.(glsl|vs|fs|vert|frag)$/,

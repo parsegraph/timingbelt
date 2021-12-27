@@ -1,8 +1,8 @@
 var assert = require("assert");
-import TimingBelt from "../dist/timingbelt";
+import TimingBelt from "../dist/parsegraph-timingbelt";
 
 describe("Package", function () {
-  it("works", ()=>{
+  it("works", () => {
     assert.ok(new TimingBelt());
   });
 });
