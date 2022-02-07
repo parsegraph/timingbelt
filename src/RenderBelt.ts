@@ -24,6 +24,7 @@ export default class RenderBelt extends AbstractBelt {
         this._renderables.splice(i, 1);
         renderable.setOnScheduleUpdate(null, null);
         this.scheduleUpdate();
+        renderable.unmount();
         return true;
       }
     }

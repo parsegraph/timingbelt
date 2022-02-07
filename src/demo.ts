@@ -185,6 +185,10 @@ class DummyRenderable implements Renderable {
   root() {
     return this._container;
   }
+
+  unmount() {
+
+  }
 }
 
 class TimingBeltDemo {

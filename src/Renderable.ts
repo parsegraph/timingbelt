@@ -21,6 +21,12 @@ export default interface Renderable {
   render(): boolean;
 
   /**
+   * Frees all memory associated with rendering this renderable, returning
+   * it to an unpainted state.
+   */
+  unmount(): void;
+
+  /**
    * Sets the listener for this renderable, to be notified
    * when the renderable changes.
    */
