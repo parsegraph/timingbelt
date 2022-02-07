@@ -1,6 +1,7 @@
 import { AnimationTimer, TimeoutTimer } from "parsegraph-timing";
 import log from "parsegraph-log";
 
+import Renderable from "./Renderable";
 import RenderBelt from "./RenderBelt";
 import JobBelt from "./JobBelt";
 
@@ -24,6 +25,14 @@ export default class TimingBelt {
     this._idleBelt.setOnScheduleUpdate(this.scheduleUpdate, this);
     this._idleTimer = new TimeoutTimer();
     this._idleTimer.setListener(this.idle, this);
+  }
+
+  addRenderable(renderable: Renderable) {
+    this.renderBelt().addRenderable(renderable);
+  }
+
+  removeRenderable(renderable: Renderable) {
+    this.renderBelt().removeRenderable(renderable);
   }
 
   queueJob(jobFunc: Function, jobFuncThisArg?: any) {
