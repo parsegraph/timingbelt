@@ -45,17 +45,21 @@ export default class JobBelt extends AbstractBelt {
     this._interval = interval;
   }
 
-  queueJob(jobFunc: Function, jobFuncThisArg?: any): ()=>void {
+  queueJob(jobFunc: Function, jobFuncThisArg?: any): () => void {
     const m = new Method(jobFunc, jobFuncThisArg);
     this._jobs.push(m);
     this.scheduleUpdate();
-    return ()=>{
-      this._jobs = this._jobs.filter(job=>job!==m);
+    return () => {
+      this._jobs = this._jobs.filter((job) => job !== m);
     };
   }
 
   isThrottled() {
-    return this._governor && this._lastCycleStart && elapsed(this._lastCycleStart) < this.interval();
+    return (
+      this._governor &&
+      this._lastCycleStart &&
+      elapsed(this._lastCycleStart) < this.interval()
+    );
   }
 
   cycle(): boolean {
@@ -90,9 +94,7 @@ export default class JobBelt extends AbstractBelt {
         this.scheduleUpdate();
       }
       logLeave();
-    } while (
-      this._burst && !this.hasElapsed() && this.hasJobs()
-    );
+    } while (this._burst && !this.hasElapsed() && this.hasJobs());
     this._lastCycleStart = this._cycleStart;
 
     return this.hasJobs();

@@ -1,32 +1,34 @@
 import TimingBelt from "./TimingBelt";
 import Renderable from "./Renderable";
 
-const newBtn = (name:string, cb:()=>void, className?:string)=>{
+const newBtn = (name: string, cb: () => void, className?: string) => {
   const btn = document.createElement("button");
   btn.innerText = name;
   btn.addEventListener("click", cb);
   btn.className = className;
   return btn;
-}
+};
 
 let id = 0;
 
 enum EventType {
-  TICK, PAINT, RENDER
+  TICK,
+  PAINT,
+  RENDER,
 }
 
 class DummyRenderable implements Renderable {
-  _id:number;
-  _container:HTMLDivElement;
+  _id: number;
+  _container: HTMLDivElement;
   _canvas: HTMLCanvasElement;
-  _ctx:CanvasRenderingContext2D;
+  _ctx: CanvasRenderingContext2D;
 
-  _needsRepaint:HTMLInputElement;
-  _needsTick:HTMLInputElement;
-  _needsRender:HTMLInputElement;
+  _needsRepaint: HTMLInputElement;
+  _needsTick: HTMLInputElement;
+  _needsRender: HTMLInputElement;
 
-  _startingX:number;
-  _x:number;
+  _startingX: number;
+  _x: number;
 
   height() {
     return this._canvas.height;
@@ -36,7 +38,7 @@ class DummyRenderable implements Renderable {
     return this._canvas.width;
   }
 
-  constructor(onRemove:()=>void) {
+  constructor(onRemove: () => void) {
     this._id = ++id;
     this._container = document.createElement("div");
     this._container.className = "renderable";
@@ -53,16 +55,19 @@ class DummyRenderable implements Renderable {
 
     this._ctx.fillStyle = "cyan";
 
-    const textWidth = "Tick Paint Render".split(" ").map(word=>{
-      return this._ctx.measureText(word).width;
-    }).reduce((prev, cur)=>{
-      return Math.max(prev, cur);
-    });
+    const textWidth = "Tick Paint Render"
+      .split(" ")
+      .map((word) => {
+        return this._ctx.measureText(word).width;
+      })
+      .reduce((prev, cur) => {
+        return Math.max(prev, cur);
+      });
 
-    this._ctx.fillText("Tick", 0, this.height()/3, this.width());
+    this._ctx.fillText("Tick", 0, this.height() / 3, this.width());
 
     this._ctx.fillStyle = "yellow";
-    this._ctx.fillText("Paint", 0, 2*this.height()/3, this.width());
+    this._ctx.fillText("Paint", 0, (2 * this.height()) / 3, this.width());
 
     this._ctx.fillStyle = "red";
     this._ctx.fillText("Render", 0, this.height(), this.width());
@@ -78,19 +83,21 @@ class DummyRenderable implements Renderable {
     btns.className = "buttons";
     this._container.appendChild(btns);
 
-    btns.appendChild(newBtn("Schedule Update", ()=>{
-      this.scheduleUpdate();
-    }));
+    btns.appendChild(
+      newBtn("Schedule Update", () => {
+        this.scheduleUpdate();
+      })
+    );
 
     if (onRemove) {
       btns.appendChild(newBtn("Delete Renderable", onRemove, "danger"));
     }
 
-    const makeCheck = (name:string, cb?:(checked:boolean)=>void)=>{
+    const makeCheck = (name: string, cb?: (checked: boolean) => void) => {
       const chk = document.createElement("input");
       chk.type = "checkbox";
       if (cb) {
-        chk.addEventListener("change", ()=>{
+        chk.addEventListener("change", () => {
           cb(chk.checked);
         });
       }
@@ -111,9 +118,9 @@ class DummyRenderable implements Renderable {
     this._container.appendChild(checks);
   }
 
-  drawLine(type:EventType) {
-    this._ctx.fillStyle = (()=>{
-      switch(type) {
+  drawLine(type: EventType) {
+    this._ctx.fillStyle = (() => {
+      switch (type) {
         case EventType.TICK:
           return "cyan";
         case EventType.PAINT:
@@ -122,8 +129,8 @@ class DummyRenderable implements Renderable {
           return "red";
       }
     })();
-    const index = (()=>{
-      switch(type) {
+    const index = (() => {
+      switch (type) {
         case EventType.TICK:
           return 0;
         case EventType.PAINT:
@@ -132,21 +139,26 @@ class DummyRenderable implements Renderable {
           return 2;
       }
     })();
-    let x = this._x++;
-    this._ctx.fillRect(x, index*this.height()/3, 1, this.height()/3);
+    const x = this._x++;
+    this._ctx.fillRect(x, (index * this.height()) / 3, 1, this.height() / 3);
     if (this._x > this.width()) {
       this._ctx.fillStyle = "black";
-      this._ctx.fillRect(this._startingX, 0, this.width() - this._startingX, this.height());
+      this._ctx.fillRect(
+        this._startingX,
+        0,
+        this.width() - this._startingX,
+        this.height()
+      );
       this._x = this._startingX;
     }
   }
 
-  tick(elapsed: number): boolean {
+  tick(): boolean {
     this.drawLine(EventType.TICK);
     return this._needsTick.checked;
   }
 
-  paint(timeout?: number): boolean {
+  paint(): boolean {
     this.drawLine(EventType.PAINT);
     return this._needsRepaint.checked;
   }
@@ -156,8 +168,8 @@ class DummyRenderable implements Renderable {
     return this._needsRender.checked;
   }
 
-  _listener:()=>void;
-  _listenerObj:object;
+  _listener: () => void;
+  _listenerObj: object;
 
   setOnScheduleUpdate(listener: () => void, listenerObj?: object): void {
     this._listener = listener;
@@ -176,11 +188,11 @@ class DummyRenderable implements Renderable {
 }
 
 class TimingBeltDemo {
-  _container:HTMLDivElement;
-  _belt:TimingBelt;
-  _id:number;
+  _container: HTMLDivElement;
+  _belt: TimingBelt;
+  _id: number;
 
-  constructor(onRemove?:()=>void) {
+  constructor(onRemove?: () => void) {
     this._id = id++;
     this._belt = new TimingBelt();
 
@@ -197,14 +209,16 @@ class TimingBeltDemo {
     const renderables = document.createElement("div");
     renderables.className = "renderables";
     this._container.appendChild(renderables);
-    btns.appendChild(newBtn("New Renderable", ()=>{
-      const renderable = new DummyRenderable(()=>{
-        renderables.removeChild(renderable.root());
-        this._belt.removeRenderable(renderable);
-      });
-      this._belt.addRenderable(renderable);
-      renderables.appendChild(renderable.root());
-    }));
+    btns.appendChild(
+      newBtn("New Renderable", () => {
+        const renderable = new DummyRenderable(() => {
+          renderables.removeChild(renderable.root());
+          this._belt.removeRenderable(renderable);
+        });
+        this._belt.addRenderable(renderable);
+        renderables.appendChild(renderable.root());
+      })
+    );
 
     if (onRemove) {
       btns.appendChild(newBtn("Delete TimingBelt", onRemove, "danger"));
@@ -221,8 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.createElement("button");
   btn.innerText = "Create TimingBelt";
   root.appendChild(btn);
-  btn.addEventListener("click", ()=>{
-    const form = new TimingBeltDemo(()=>{
+  btn.addEventListener("click", () => {
+    const form = new TimingBeltDemo(() => {
       root.removeChild(form.root());
     });
     root.appendChild(form.root());

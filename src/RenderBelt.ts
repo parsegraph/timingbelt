@@ -35,21 +35,21 @@ export default class RenderBelt extends AbstractBelt {
       Math.random() % this._renderables.length
     );
     let i = 0;
-    return ()=>{
+    return () => {
       if (i >= this._renderables.length) {
         return null;
       }
       return this._renderables[
         (renderableOffset + i++) % this._renderables.length
       ];
-    }
+    };
   }
 
   paintAndRender() {
     let needsUpdate = false;
-    let renderable:Renderable;
+    let renderable: Renderable;
     const iter = this.iterate();
-    while (renderable = iter()) {
+    while ((renderable = iter())) {
       if (this.hasElapsed()) {
         return true;
       }
@@ -65,9 +65,9 @@ export default class RenderBelt extends AbstractBelt {
 
   renderAndPaint() {
     let needsUpdate = false;
-    let renderable:Renderable;
+    let renderable: Renderable;
     const iter = this.iterate();
-    while (renderable = iter()) {
+    while ((renderable = iter())) {
       needsUpdate = renderable.render() || needsUpdate;
       if (this.hasElapsed()) {
         return true;
@@ -102,8 +102,8 @@ export default class RenderBelt extends AbstractBelt {
     this._cycleStart = new Date();
 
     // Update all input functions.
-    return this.runTicks() ?
-      this.renderAndPaint() || true :
-      this.paintAndRender();
+    return this.runTicks()
+      ? this.renderAndPaint() || true
+      : this.paintAndRender();
   }
 }

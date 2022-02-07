@@ -18,7 +18,7 @@ export default abstract class AbstractBelt {
     return this._interval;
   }
 
-  setOnScheduleUpdate(listener: ()=>void, listenerObj?: object) {
+  setOnScheduleUpdate(listener: () => void, listenerObj?: object) {
     this._scheduleUpdate.set(listener, listenerObj);
   }
 
@@ -36,4 +36,3 @@ export default abstract class AbstractBelt {
 
   abstract cycle(): boolean;
 }
-

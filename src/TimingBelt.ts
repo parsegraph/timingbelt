@@ -52,7 +52,7 @@ export default class TimingBelt {
 
   cycle() {
     if (this._renderBelt.cycle()) {
-      this.scheduleUpdate()
+      this.scheduleUpdate();
       return;
     }
 
