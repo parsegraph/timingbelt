@@ -4,7 +4,7 @@ export default interface Renderable {
    *
    * @returns {boolean} true if this renderable has changed.
    */
-  tick(elapsed: number): boolean;
+  tick(cycleStart: number): boolean;
 
   /**
    * Paints this element, within the given timeout.
