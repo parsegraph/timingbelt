@@ -19,6 +19,6 @@
       "parsegraph-method": "^1.4.10"
     },
     "peerDependencies": {
-      "parsegraph-log": "^1.6.1"
+      "parsegraph-log": "^1.7.0"
     }
 }
