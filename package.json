@@ -14,17 +14,6 @@
     "url": "https://github.com/parsegraph/timingbelt/issues"
   },
   "homepage": "https://github.com/parsegraph/timingbelt#readme",
-  "nyc": {
-    "extends": "@istanbuljs/nyc-config-babel",
-    "reporter": [
-      "html"
-    ],
-    "exclude": [
-      "test/**.js",
-      "dist/**.js"
-    ],
-    "reportDir": "dist/coverage"
-  },
   "dependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
