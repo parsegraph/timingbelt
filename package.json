@@ -64,7 +64,7 @@
     "webpack-cli": "^4.9.1"
   },
   "peerDependencies": {
-    "parsegraph-log": "^1.7.0"
+    "parsegraph-log": "^1.7.2"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
