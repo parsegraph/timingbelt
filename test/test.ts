@@ -1,4 +1,4 @@
-var assert = require("assert");
+const assert = require("assert");
 import TimingBelt from "../src/index.ts";
 
 describe("Package", function () {
