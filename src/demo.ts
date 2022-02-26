@@ -1,4 +1,4 @@
-import TimingBelt from "./TimingBelt";
+import TimingBelt from "./index";
 import Renderable from "./Renderable";
 
 const newBtn = (name: string, cb: () => void, className?: string) => {

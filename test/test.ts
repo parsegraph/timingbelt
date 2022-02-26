@@ -1,5 +1,5 @@
 var assert = require("assert");
-import TimingBelt from "../src/TimingBelt.ts";
+import TimingBelt from "../src/index.ts";
 
 describe("Package", function () {
   it("works", () => {
