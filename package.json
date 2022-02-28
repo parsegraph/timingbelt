@@ -32,7 +32,7 @@
     "jsdom": "19.0.0",
     "jsdom-global": "3.0.2",
     "parsegraph-method": "^1.4.20",
-    "parsegraph-timing": "^1.4.10",
+    "parsegraph-timing": "^1.4.11",
     "prettier": "2.5.1",
     "raw-loader": "^4.0.1",
     "source-map-loader": "^3.0.1",
