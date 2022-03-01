@@ -15,8 +15,8 @@
   },
   "homepage": "https://github.com/parsegraph/timingbelt#readme",
   "dependencies": {
-    "parsegraph-method": "^1.4.20",
-    "parsegraph-timing": "^1.4.14"
+    "parsegraph-method": "^1.4.22",
+    "parsegraph-timing": "^1.4.15"
   },
   "peerDependencies": {
     "parsegraph-log": "^1.7.3"
