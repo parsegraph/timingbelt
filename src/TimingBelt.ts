@@ -1,5 +1,5 @@
 import { AnimationTimer, TimeoutTimer } from "parsegraph-timing";
-import log from "parsegraph-log";
+import {logc} from "parsegraph-log";
 
 import Renderable from "./Renderable";
 import RenderBelt from "./RenderBelt";
@@ -80,7 +80,7 @@ export default class TimingBelt {
   }
 
   scheduleUpdate(): void {
-    log("TimingBelt is scheduling update");
+    logc("Schedule updates", "TimingBelt is scheduling update");
     this._renderTimer.schedule();
   }
 }

@@ -1,5 +1,5 @@
 import { elapsed } from "parsegraph-timing";
-import log from "parsegraph-log";
+import log, {logEnterc, logLeave} from "parsegraph-log";
 
 import AbstractBelt from "./AbstractBelt";
 import Renderable from "./Renderable";
@@ -47,35 +47,48 @@ export default class RenderBelt extends AbstractBelt {
   }
 
   paintAndRender() {
+    logEnterc("Painting & Rendering", "Paint and render")
     let needsUpdate = false;
     let renderable: Renderable;
     const iter = this.iterate();
     while ((renderable = iter())) {
       if (this.hasElapsed()) {
+        logLeave();
         return true;
       }
       needsUpdate = renderable.paint(this.renderableInterval()) || needsUpdate;
       if (this.hasElapsed()) {
+        log("Painting ran out of time.");
+        logLeave();
         return true;
       }
       needsUpdate = renderable.render() || needsUpdate;
-      log("NeedsUpdate=" + needsUpdate);
+      if (needsUpdate) {
+        log("Painting needs another cycle.");
+      }
     }
+    logLeave();
     return needsUpdate;
   }
 
   renderAndPaint() {
+    logEnterc("Painting & Rendering", "Render and paint")
     let needsUpdate = false;
     let renderable: Renderable;
     const iter = this.iterate();
     while ((renderable = iter())) {
       needsUpdate = renderable.render() || needsUpdate;
       if (this.hasElapsed()) {
+        log("Rendering ran out of time.");
+        logLeave();
         return true;
       }
       needsUpdate = renderable.paint(this.renderableInterval()) || needsUpdate;
-      log("NeedsUpdate=" + needsUpdate);
+      if (needsUpdate) {
+        log("Painting needs another cycle.");
+      }
     }
+    logLeave();
     return needsUpdate;
   }
 
@@ -93,7 +106,6 @@ export default class RenderBelt extends AbstractBelt {
       renderable = this._renderables[i];
       inputChangedScene =
         renderable.tick(this._cycleStart.getTime()) || inputChangedScene;
-      log("Running timing belt. inputchangedscene=", inputChangedScene);
     }
     return inputChangedScene;
   }
