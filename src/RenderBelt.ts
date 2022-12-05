@@ -1,5 +1,5 @@
 import { elapsed } from "parsegraph-timing";
-import log, {logEnterc, logLeave} from "parsegraph-log";
+import log, { logEnterc, logLeave } from "parsegraph-log";
 
 import AbstractBelt from "./AbstractBelt";
 import Renderable from "./Renderable";
@@ -47,7 +47,7 @@ export default class RenderBelt extends AbstractBelt {
   }
 
   paintAndRender() {
-    logEnterc("Painting & Rendering", "Paint and render")
+    logEnterc("Painting & Rendering", "Paint and render");
     let needsUpdate = false;
     let renderable: Renderable;
     const iter = this.iterate();
@@ -72,7 +72,7 @@ export default class RenderBelt extends AbstractBelt {
   }
 
   renderAndPaint() {
-    logEnterc("Painting & Rendering", "Render and paint")
+    logEnterc("Painting & Rendering", "Render and paint");
     let needsUpdate = false;
     let renderable: Renderable;
     const iter = this.iterate();
@@ -115,8 +115,6 @@ export default class RenderBelt extends AbstractBelt {
     this._cycleStart = new Date();
 
     // Update all input functions.
-    return this.runTicks()
-      ? this.renderAndPaint() || true
-      : this.paintAndRender();
+    return this.runTicks() ? this.renderAndPaint() || true : this.paintAndRender();
   }
 }
