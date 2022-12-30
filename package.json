@@ -15,11 +15,11 @@
   },
   "homepage": "https://github.com/parsegraph/timingbelt#readme",
   "dependencies": {
-    "parsegraph-method": "^1.4.22",
-    "parsegraph-timing": "^1.4.16"
+    "parsegraph-method": "^1.4.23",
+    "parsegraph-timing": "^1.4.17"
   },
   "peerDependencies": {
-    "parsegraph-log": "^1.7.3"
+    "parsegraph-log": "^1.7.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
@@ -43,7 +43,7 @@
     "jest": "^27.5.1",
     "jsdom": "^19.0.0",
     "jsdom-global": "^3.0.2",
-    "parsegraph-log": "^1.7.3",
+    "parsegraph-log": "^1.7.4",
     "prettier": "^2.5.1",
     "raw-loader": "^4.0.2",
     "source-map-loader": "^3.0.1",
