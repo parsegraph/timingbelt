@@ -1,7 +1,7 @@
 import AbstractBelt from "./AbstractBelt";
 import Method from "parsegraph-method";
 import { elapsed } from "parsegraph-timing";
-import log, { logEnterc, logLeave } from "parsegraph-log";
+import { log, logEnterc, logLeave } from "./log";
 
 // Whether idle loops are limited to being called only as
 // often as parsegraph_INTERVAL.

@@ -19,7 +19,7 @@
     "parsegraph-timing": "^1.4.17"
   },
   "peerDependencies": {
-    "parsegraph-log": "^1.7.4"
+    "parsegraph-log": "^1.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
@@ -43,7 +43,7 @@
     "jest": "^27.5.1",
     "jsdom": "^19.0.0",
     "jsdom-global": "^3.0.2",
-    "parsegraph-log": "^1.7.4",
+    "parsegraph-log": "^1.9.0",
     "prettier": "^2.5.1",
     "raw-loader": "^4.0.2",
     "source-map-loader": "^3.0.1",

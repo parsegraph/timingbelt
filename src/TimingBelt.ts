@@ -1,5 +1,5 @@
 import { AnimationTimer, TimeoutTimer } from "parsegraph-timing";
-import { logc } from "parsegraph-log";
+import { logc } from "./log";
 
 import Renderable from "./Renderable";
 import RenderBelt from "./RenderBelt";

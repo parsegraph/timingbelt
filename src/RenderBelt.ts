@@ -1,5 +1,5 @@
 import { elapsed } from "parsegraph-timing";
-import log, { logEnterc, logLeave } from "parsegraph-log";
+import { log, logEnterc, logLeave } from "./log";
 
 import AbstractBelt from "./AbstractBelt";
 import Renderable from "./Renderable";
