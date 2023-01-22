@@ -115,6 +115,8 @@ export default class RenderBelt extends AbstractBelt {
     this._cycleStart = new Date();
 
     // Update all input functions.
-    return this.runTicks() ? this.renderAndPaint() || true : this.paintAndRender();
+    return this.runTicks()
+      ? this.renderAndPaint() || true
+      : this.paintAndRender();
   }
 }

@@ -1,10 +1,5 @@
-import {logModule} from 'parsegraph-log';
+import { logModule } from "parsegraph-log";
 
-const {log, logEnterc, logLeave, logc} = logModule("parsegraph-timingbelt");
+const { log, logEnterc, logLeave, logc } = logModule("parsegraph-timingbelt");
 
-export {
-  log,
-  logEnterc,
-  logLeave,
-  logc
-}
+export { log, logEnterc, logLeave, logc };
