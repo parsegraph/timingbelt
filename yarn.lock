@@ -3896,10 +3896,10 @@ parsegraph-gettimeinmillis@^1.4.7:
   resolved "https://registry.yarnpkg.com/parsegraph-gettimeinmillis/-/parsegraph-gettimeinmillis-1.4.7.tgz#ee0749d2cdac66c21c5d46f9cfc41b7adf562bd4"
   integrity sha512-JssLleswIxH53iTWC8XZUw4grZp2lDdtl7NCYf50v5n2u1lGXpeRjn1JNW1td2iqlqAy3E/nzBXzDXZpQdMMsg==
 
-parsegraph-log@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/parsegraph-log/-/parsegraph-log-1.9.1.tgz#e37c2a7e0d9774da93f3dc7785d4292d6a67d2d3"
-  integrity sha512-C0Z12qk2TiyGCNDTqt8UUzcXkukfwN6Pq2F8DCk3jva8ECkhyOqUnO1yLeCVMxOADCSwgxWGfgejsuxDtMzWLQ==
+parsegraph-log@^1.9.2:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/parsegraph-log/-/parsegraph-log-1.9.2.tgz#e024e1da4494ab107bb06bbfd61b5437a70f993f"
+  integrity sha512-QC7jhR6hxg6crjUb+l0djT+msE7ZB0uoKNIyv/tpUf/fuCuNctQUSEIZWBLPHTIeQxMue0f7YqSssjhnGDm0Bw==
 
 parsegraph-method@^1.4.23:
   version "1.4.23"
