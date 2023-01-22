@@ -225,6 +225,26 @@ class TimingBeltDemo {
     if (onRemove) {
       btns.appendChild(newBtn("Delete TimingBelt", onRemove, "danger"));
     }
+
+    const slider = document.createElement("input");
+    slider.type = "range";
+    slider.min = "0";
+    slider.max = "60";
+    slider.value = "0";
+    slider.addEventListener("input", (e)=>{
+      const cyclesPerSec = parseInt((e.target as HTMLInputElement).value);
+      this.belt().setMaxCyclesPerSecond(cyclesPerSec);
+    });
+    btns.appendChild(slider);
+
+    const autorender = makeCheck("Autorender", (c)=>{
+      this.belt().setAutorender(c);
+    });
+    btns.appendChild(autorender.parentElement);
+  }
+
+  belt() {
+    return this._belt;
   }
 
   root() {

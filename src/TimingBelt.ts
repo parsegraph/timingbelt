@@ -15,6 +15,10 @@ export default class TimingBelt {
   _idleBelt: JobBelt;
   _idleTimer: TimeoutTimer;
 
+  _lastCycle: number;
+  _maxCyclesPerSecond: number;
+  _autorender: boolean;
+
   constructor(interval: number = INTERVAL) {
     this._renderBelt = new RenderBelt(interval);
     this._renderBelt.setOnScheduleUpdate(this.scheduleUpdate, this);
@@ -25,6 +29,30 @@ export default class TimingBelt {
     this._idleBelt.setOnScheduleUpdate(this.scheduleUpdate, this);
     this._idleTimer = new TimeoutTimer();
     this._idleTimer.setListener(this.idle, this);
+
+    this._lastCycle = NaN;
+    this._maxCyclesPerSecond = 0;
+
+    this._autorender = false;
+  }
+
+  autorender() {
+    return this._autorender;
+  }
+
+  setAutorender(autorender: boolean) {
+    this._autorender = autorender;
+    if (this.autorender()) {
+      this.scheduleUpdate();
+    }
+  }
+
+  setMaxCyclesPerSecond(maxCyclesPerSecond: number) {
+    this._maxCyclesPerSecond = maxCyclesPerSecond;
+  }
+
+  maxCyclesPerSecond() {
+    return this._maxCyclesPerSecond;
   }
 
   addRenderable(renderable: Renderable) {
@@ -60,7 +88,23 @@ export default class TimingBelt {
   }
 
   cycle() {
-    if (this._renderBelt.cycle()) {
+    // Rate-limit cycling as necessary
+    if (!isNaN(this._lastCycle) && this.maxCyclesPerSecond() > 0) {
+      const minInterval = 1000 / this.maxCyclesPerSecond();
+      if (Date.now() - this._lastCycle < minInterval) {
+        logc(
+          `TimingBelt is rate-limiting its framrate (${
+            minInterval - (Date.now() - this._lastCycle)
+          }ms too early)`
+        );
+        this.scheduleUpdate();
+        return;
+      }
+    }
+    this._lastCycle = Date.now();
+
+    if (this._renderBelt.cycle() || this.autorender()) {
+      // This belt needs another render (or is autorendering)
       this.scheduleUpdate();
       return;
     }
