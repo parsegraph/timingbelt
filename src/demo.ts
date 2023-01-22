@@ -231,13 +231,13 @@ class TimingBeltDemo {
     slider.min = "0";
     slider.max = "60";
     slider.value = "0";
-    slider.addEventListener("input", (e)=>{
+    slider.addEventListener("input", (e) => {
       const cyclesPerSec = parseInt((e.target as HTMLInputElement).value);
       this.belt().setMaxCyclesPerSecond(cyclesPerSec);
     });
     btns.appendChild(slider);
 
-    const autorender = makeCheck("Autorender", (c)=>{
+    const autorender = makeCheck("Autorender", (c) => {
       this.belt().setAutorender(c);
     });
     btns.appendChild(autorender.parentElement);
