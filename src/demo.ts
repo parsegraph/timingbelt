@@ -17,6 +17,20 @@ enum EventType {
   RENDER,
 }
 
+const makeCheck = (name: string, cb?: (checked: boolean) => void) => {
+  const chk = document.createElement("input");
+  chk.type = "checkbox";
+  if (cb) {
+    chk.addEventListener("change", () => {
+      cb(chk.checked);
+    });
+  }
+  const label = document.createElement("label");
+  label.innerText = name;
+  label.appendChild(chk);
+  return chk;
+};
+
 class DummyRenderable implements Renderable {
   _id: number;
   _container: HTMLDivElement;
@@ -92,20 +106,6 @@ class DummyRenderable implements Renderable {
     if (onRemove) {
       btns.appendChild(newBtn("Delete Renderable", onRemove, "danger"));
     }
-
-    const makeCheck = (name: string, cb?: (checked: boolean) => void) => {
-      const chk = document.createElement("input");
-      chk.type = "checkbox";
-      if (cb) {
-        chk.addEventListener("change", () => {
-          cb(chk.checked);
-        });
-      }
-      const label = document.createElement("label");
-      label.innerText = name;
-      label.appendChild(chk);
-      return chk;
-    };
 
     const checks = document.createElement("div");
     checks.className = "buttons";
